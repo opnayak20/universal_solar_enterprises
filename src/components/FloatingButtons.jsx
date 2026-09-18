@@ -5,7 +5,8 @@ import { useInstantDB } from "../hooks/useInstantDB";
 const FloatingButtons = () => {
   const { data } = useInstantDB();
 
-  const phoneNum = data.contact?.phone ? data.contact.phone.replace(/[^0-9]/g, "") : "919876543210";
+  const rawPhone = data.contact?.phone ? data.contact.phone.replace(/[^0-9]/g, "") : "917889285239";
+  const phoneNum = rawPhone.length === 10 ? `91${rawPhone}` : rawPhone;
   const whatsappNum = data.contact?.whatsapp || phoneNum;
 
   return (

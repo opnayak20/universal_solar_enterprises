@@ -45,7 +45,7 @@ const Hero = () => {
           {/* Badge */}
           <div className="inline-flex items-center space-x-1.5 sm:space-x-2 bg-emerald-500/20 border border-emerald-400/30 backdrop-blur-md px-3 sm:px-4 py-1.5 rounded-full text-[11px] sm:text-sm font-medium text-emerald-200 mb-5 sm:mb-6 max-w-[95vw]">
             <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 flex-shrink-0" />
-            <span className="truncate sm:whitespace-normal">MNRE & CREDA Authorized • Raipur, Chhattisgarh</span>
+            <span className="truncate sm:whitespace-normal">MNRE & UPNEDA Authorized • Agra, Uttar Pradesh</span>
           </div>
 
           {/* Heading */}

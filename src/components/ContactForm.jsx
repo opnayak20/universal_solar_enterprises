@@ -21,7 +21,7 @@ const ContactForm = () => {
     phone: '',
     message: '',
     serviceType: 'PM Surya Ghar Yojana',
-    city: 'Raipur'
+    city: 'Agra'
   });
 
   const [status, setStatus] = useState({
@@ -60,7 +60,7 @@ const ContactForm = () => {
 
       setStatus({
         type: 'success',
-        message: 'Thank you! Your solar inquiry has been received. Our Raipur engineering team will contact you shortly.'
+        message: 'Thank you! Your solar inquiry has been received. Our engineering team will contact you shortly.'
       });
 
       setFormData({
@@ -69,13 +69,13 @@ const ContactForm = () => {
         phone: '',
         message: '',
         serviceType: 'PM Surya Ghar Yojana',
-        city: 'Raipur'
+        city: 'Agra'
       });
     } catch (error) {
       console.warn('Inquiry submitted (simulation fallback):', formData, error);
       setStatus({
         type: 'success',
-        message: 'Thank you! Your inquiry has been registered. Our Solar Enterprises representative in Raipur will contact you within 24 hours.'
+        message: 'Thank you! Your inquiry has been registered. Our Solar Enterprises representative will contact you within 24 hours.'
       });
       setFormData({
         name: '',
@@ -83,7 +83,7 @@ const ContactForm = () => {
         phone: '',
         message: '',
         serviceType: 'PM Surya Ghar Yojana',
-        city: 'Raipur'
+        city: 'Agra'
       });
     } finally {
       setIsSubmitting(false);
@@ -112,7 +112,7 @@ const ContactForm = () => {
             </h2>
             <div className="w-16 h-1 bg-emerald-600 mx-auto rounded-full mb-3 sm:mb-4"></div>
             <p className="text-sm sm:text-lg text-gray-600 px-2">
-              Speak directly with our solar engineers in Raipur. We calculate your rooftop potential, government subsidy, and monthly savings.
+              Speak directly with our solar engineers. We calculate your rooftop potential, government subsidy, and monthly savings.
             </p>
           </div>
 
@@ -259,7 +259,7 @@ const ContactForm = () => {
                         onChange={handleChange}
                         required
                         className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl border border-slate-200 focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/20 text-xs sm:text-sm outline-none transition"
-                        placeholder="e.g. 98765 43210"
+                        placeholder="e.g. 78892 85239"
                       />
                     </div>
                   </div>
@@ -281,7 +281,7 @@ const ContactForm = () => {
 
                     <div>
                       <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5 sm:mb-2">
-                        City / Location (Chhattisgarh)
+                        City / Location (Uttar Pradesh)
                       </label>
                       <input
                         type="text"
@@ -289,7 +289,7 @@ const ContactForm = () => {
                         value={formData.city}
                         onChange={handleChange}
                         className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl border border-slate-200 focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/20 text-xs sm:text-sm outline-none transition"
-                        placeholder="Raipur, Bhilai, Durg, etc."
+                        placeholder="Agra, Mathura, Firozabad, etc."
                       />
                     </div>
                   </div>

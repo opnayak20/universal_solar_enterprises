@@ -78,7 +78,7 @@ const Navbar = () => {
                   scrolled ? 'text-emerald-700' : 'text-emerald-300'
                 }`}
               >
-                Raipur, Chhattisgarh
+                {data.contact?.city ? `${data.contact.city}, ${data.contact.state || 'Uttar Pradesh'}` : 'Agra, Uttar Pradesh'}
               </span>
             </div>
           </div>
@@ -155,7 +155,7 @@ const Navbar = () => {
               <span>Request Free Consultation</span>
             </button>
             <div className="text-center text-xs text-gray-500 font-medium">
-              Raipur, Chhattisgarh • Call: {data.contact?.phone || '+91 98765 43210'}
+              {data.contact?.city ? `${data.contact.city}, ${data.contact.state || 'Uttar Pradesh'}` : 'Agra, Uttar Pradesh'} • Call: {data.contact?.phone || '+91 78892 85239'}
             </div>
           </div>
         </div>

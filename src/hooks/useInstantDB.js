@@ -2,6 +2,8 @@ import { defaultData } from '../data/defaultData';
 import { useState, useEffect } from 'react';
 import { useQuery, useTransaction } from '../providers/InstantProvider';
 
+const STORAGE_KEY = 'solar_enterprises_site_data_v2';
+
 export const useInstantDB = () => {
   // Query for ALL siteData records
   const { data, isLoading, error } = useQuery({
@@ -25,18 +27,6 @@ export const useInstantDB = () => {
     if (error) {
       console.error('❌ Instantd Query Error:', error);
     }
-    
-    if (data?.siteData && data.siteData.length > 0) {
-      console.log('✅ Found siteData records:', data.siteData);
-      data.siteData.forEach((record, index) => {
-        console.log(`  Record ${index}:`, {
-          id: record.id,
-          recordId: record.recordId,
-          hasData: !!record.data,
-          dataLength: record.data?.length || 0
-        });
-      });
-    }
   }, [data, isLoading, error]);
 
   // Get the main data record
@@ -45,27 +35,22 @@ export const useInstantDB = () => {
 
   // State to hold current data
   const [currentData, setCurrentData] = useState(() => {
-    // Try localStorage first for instant load
-    const stored = localStorage.getItem('solar_enterprises_site_data');
-    if (stored) {
-      try {
-        return JSON.parse(stored);
-      } catch (e) {
-        console.error('Error parsing localStorage:', e);
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (parsed?.contact?.phone?.includes('7889285239') || parsed?.contact?.address?.includes('Agra')) {
+          return parsed;
+        }
       }
+    } catch (e) {
+      console.error('Error parsing localStorage:', e);
     }
     return defaultData;
   });
 
   // Update when Instantd data changes (real-time sync)
   useEffect(() => {
-    console.log('🔄 Checking for Instantd updates...', {
-      hasMainRecord: !!mainRecord,
-      hasData: !!mainRecord?.data,
-      recordsCount: siteDataRecords.length,
-      isLoading
-    });
-
     if (mainRecord?.data) {
       try {
         const parsed = JSON.parse(mainRecord.data);
@@ -74,26 +59,20 @@ export const useInstantDB = () => {
         
         // Only update if data actually changed
         if (currentString !== parsedString) {
-          console.log('📥 ✨ NEW DATA RECEIVED FROM INSTANTD! ✨');
-          console.log('📥 Changes detected, updating...');
           setCurrentData(parsed);
-          localStorage.setItem('arkaya_site_data', JSON.stringify(parsed));
-          console.log('✅ Data updated successfully!');
-        } else {
-          console.log('✅ Data is up to date (no changes detected)');
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
         }
       } catch (e) {
         console.error('❌ Error parsing Instantd data:', e);
       }
     } else if (siteDataRecords.length === 0 && !isLoading) {
-      console.log('⚠️ No data found in Instantd, using localStorage');
-      // No data in Instantd yet - use localStorage or default
-      const stored = localStorage.getItem('arkaya_site_data');
+      const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         try {
           const parsed = JSON.parse(stored);
-          setCurrentData(parsed);
-          console.log('✅ Loaded data from localStorage');
+          if (parsed?.contact?.phone?.includes('7889285239') || parsed?.contact?.address?.includes('Agra')) {
+            setCurrentData(parsed);
+          }
         } catch (e) {
           console.error('❌ Error parsing localStorage:', e);
         }
@@ -106,7 +85,7 @@ export const useInstantDB = () => {
     
     // Update local state immediately
     setCurrentData(newData);
-    localStorage.setItem('arkaya_site_data', dataString);
+    localStorage.setItem(STORAGE_KEY, dataString);
     
     // Save to Instantd
     try {
@@ -176,7 +155,7 @@ export const useInstantDB = () => {
       try {
         const parsed = JSON.parse(mainRecord.data);
         setCurrentData(parsed);
-        localStorage.setItem('arkaya_site_data', JSON.stringify(parsed));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
       } catch (e) {
         console.error('Error refreshing:', e);
       }

@@ -39,11 +39,11 @@ const Footer = () => {
             </div>
 
             <p className="text-xs sm:text-sm text-emerald-100/80 leading-relaxed max-w-md pt-1 sm:pt-2">
-              Leading solar EPC contractor in Raipur, Chhattisgarh offering top-tier rooftop solar plants, commercial installations, and agricultural pump systems with full subsidy and net-metering support.
+              Leading solar EPC contractor in Agra, Uttar Pradesh offering top-tier rooftop solar plants, commercial installations, and agricultural pump systems with full subsidy and net-metering support.
             </p>
 
             <div className="inline-block px-3 py-1 rounded-lg bg-emerald-900/80 border border-emerald-700/50 text-[11px] sm:text-xs font-semibold text-emerald-300">
-              ISO Certified • MNRE & CREDA Compliant
+              ISO Certified • MNRE & UPNEDA Compliant
             </div>
           </div>
 
@@ -74,7 +74,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Raipur Office Details */}
+          {/* Agra Office Details */}
           <div className="md:col-span-4 space-y-3 sm:space-y-4">
             <h4 className="text-xs sm:text-sm font-bold text-emerald-400 uppercase tracking-wider mb-3 sm:mb-4">
               Office Details

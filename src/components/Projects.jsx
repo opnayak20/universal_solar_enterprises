@@ -24,7 +24,7 @@ const Projects = () => {
             </h2>
             <div className="w-16 h-1 bg-emerald-600 mx-auto rounded-full mb-3 sm:mb-4"></div>
             <p className="text-sm sm:text-lg text-gray-600 leading-relaxed px-2">
-              Demonstrating excellence in solar project execution across Raipur and Chhattisgarh.
+              Demonstrating excellence in solar project execution across Agra and Uttar Pradesh.
             </p>
           </div>
 
